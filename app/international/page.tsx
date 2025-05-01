@@ -27,6 +27,7 @@ import { NewsBadge } from "@/components/NewsBadge";
 import { NewsModal } from "@/components/NewsModal";
 import { Button } from "@/components/ui/button";
 import { MarketSentimentChart } from "@/components/MarketSentimentChart";
+import { BackButton } from "@/components/BackButton";
 
 ChartJS.register(
   CategoryScale,
@@ -76,7 +77,17 @@ async function fetchFredSeries(series: string) {
     .filter((item: EconomicData) => !isNaN(item.value));
 }
 
-const newsCategories = ["General", "Forex", "Crypto", "Merger", "Macroeconomia", "FED", "USA", "Argentina", "Finanzas"];
+const newsCategories = [
+  "General",
+  "Forex",
+  "Crypto",
+  "Merger",
+  "Macroeconomia",
+  "FED",
+  "USA",
+  "Argentina",
+  "Finanzas",
+];
 // const newsCategories = []
 
 export default function Internacional() {
@@ -240,7 +251,10 @@ export default function Internacional() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Sección Internacional</h1>
+      <div className="flex items-center gap-4 mb-6 ml-4">
+        <BackButton href="/" />
+        <h1 className="text-3xl font-bold">Sección Internacional</h1>
+      </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="mb-6">
@@ -286,7 +300,9 @@ export default function Internacional() {
                     {fedFundsRate[fedFundsRate.length - 1]?.value.toFixed(2)}%
                   </TableCell>
                   <TableCell>
-                    {new Date(fedFundsRate[fedFundsRate.length - 1]?.date).toLocaleDateString()}
+                    {new Date(
+                      fedFundsRate[fedFundsRate.length - 1]?.date
+                    ).toLocaleDateString()}
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -377,7 +393,6 @@ export default function Internacional() {
     </div>
   );
 }
-
 
 // "use client"
 
@@ -660,4 +675,3 @@ export default function Internacional() {
 //     </div>
 //   )
 // }
-

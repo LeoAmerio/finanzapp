@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <html lang="es" suppressHydrationWarning>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
         <AuthProvider>
           <body className={inter.className}>{children}</body>
         </AuthProvider>
